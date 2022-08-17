@@ -16,6 +16,7 @@ app.get("/api", (req, res) => {
 app.post("/api", (req, res) => {
   console.log(`Post made with ${req.body}`)
   dataArray = req.body
+  res.redirect('/api')
 });
 
 app.get('*', (req, res) => {
