@@ -12,29 +12,14 @@ app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-app.use(express.static(path.resolve(__dirname, '../client/build')));
-
 app.get("/api", (req, res) => {
   res.json({ message: dataArray });
 });
 
 app.post("/api", (req, res) => {
   console.log(req.url)
-  var finalArr = []
-  const {soundArr} = req.body
-  dataArray = soundArr
-  for(let i = 0; i < dataArray.length; i+=25){
-    var loopArr = []
-    for(let j = 0; j < 25; j++){
-      loopArr.push(dataArray[i+j])
-    }
-    finalArr.push(loopArr)
-  }
-  console.log(finalArr)
-});
-
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+  const {theObject} = req.body
+  console.log(theObject)
 });
 
 app.listen(PORT, () => {
